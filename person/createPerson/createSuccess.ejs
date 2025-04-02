@@ -1,0 +1,28 @@
+{
+    "responses": [
+        {
+            "inject": "<%- stringify(filename, './person/functions/responseCreateSuccess.ejs') %>"
+        }
+    ],
+    "predicates": [
+        {
+            "and": [
+                {
+                    "equals": {
+                        "method": "POST",
+                        "path": "/api/v1/person"
+                    }
+                },
+                {
+                    "exists": {
+                        "body": {
+                            "title": true,
+                            "firstName": true,
+                            "lastName": true
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,38 @@
+{
+    "responses": [
+        {
+            "is": {
+                "statusCode": 400,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "message": "Bad Request"
+                }
+            }
+        }
+    ],
+    "predicates": [
+        {
+            "and":[
+                {
+                    "equals": {
+                        "method": "POST",
+                        "path": "/api/v1/person"
+                    }
+                },
+                {
+                    "not": {
+                        "exists": {
+                            "body": {
+                                "title": true,
+                                "firstName": true,
+                                "lastName": true
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

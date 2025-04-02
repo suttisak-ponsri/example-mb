@@ -1,0 +1,19 @@
+function exitingPerson(req) {
+    const fs = require('fs');
+    const path = require('path');
+
+    const data = fs.readFileSync(path.resolve(process.cwd(), 'person/data/persons.json'), 'utf8');
+    const persons = JSON.parse(data);
+    const reqBody = JSON.parse(req.body);
+    let isExisting = false;
+    for (let i = 0; i < persons.length; i++) {
+        if (persons[i].title === reqBody.title && persons[i].firstName === reqBody.firstName && persons[i].lastName === reqBody.lastName) {
+            isExisting = true;
+        }
+
+        if (isExisting) {
+            break;
+        }
+    }
+    return isExisting;
+}

@@ -1,0 +1,12 @@
+{
+    "protocol": "http",
+    "port": 4547,
+    "stubs": [
+        <% include createPerson/existingPerson.ejs %>,
+        <% include createPerson/badRequest.ejs %>,
+        <% include createPerson/timeout.ejs %>,
+        <% include createPerson/createSuccess.ejs %>,
+        <% include updatePerson/updateSuccess.ejs %>,
+        <% include getPerson/getPerson.ejs %>
+    ]
+}

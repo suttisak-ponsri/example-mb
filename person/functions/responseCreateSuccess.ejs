@@ -1,0 +1,18 @@
+function createdSuccess(req) {
+    let date = new Date();
+    let httpCode = 201;
+    let headers = {
+        "Content-Type": "application/json"
+    }
+    let body = {
+        "code": 1000,
+        "message": "Person created successfully",
+        "person": JSON.parse(req.body),
+        "created": date
+    }
+    return {
+        statusCode: httpCode,
+        headers: headers,
+        body: JSON.stringify(body)
+    };
+}

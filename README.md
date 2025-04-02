@@ -12,6 +12,10 @@ npm install
 ```bash
 mb start --configfile imposters.ejs --allowInjection --localOnly
 ```
+or
+```bash
+npx mb start --configfile imposters.ejs --allowInjection --localOnly
+```
 
 ## License
 This project is licensed under the MIT License.

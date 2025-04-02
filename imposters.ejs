@@ -1,0 +1,43 @@
+{
+    "imposters": [
+        {
+            "protocol": "http",
+            "port": 4546,
+            "stubs": [
+                {
+                    "responses": [
+                        {
+                            "is": {
+                                "statusCode": 200,
+                                "headers": {
+                                    "Content-Type": "application/json"
+                                },
+                                "body": {
+                                    "message": "Hello World"
+                                }
+                            }
+                        }
+                    ],
+                    "predicates": [
+                        {
+                            "equals": {
+                                "method": "GET",
+                                "path": "/api/v1/test"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "responses": [
+                        {
+                            "is": {
+                                "statusCode": 404
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        <% include person/person.ejs%>
+    ]
+}

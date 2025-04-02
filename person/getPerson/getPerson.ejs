@@ -1,0 +1,26 @@
+{
+    "responses": [
+        {
+            "proxy": {
+                "to": "https://jsonplaceholder.typicode.com",
+                "mode": "proxyAlways"
+            }
+        }
+    ],
+    "predicates": [
+        {
+            "and": [
+                {
+                    "equals": {
+                        "method": "GET"
+                    }
+                },
+                {
+                    "matches": {
+                        "path": "^/users/\\d+$"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "responses": [
+        {
+            "inject": "<%- stringify(filename, './person/functions/responseUpdateSuccess.ejs') %>"
+        }
+    ],
+    "predicates": [
+        {
+            "and": [
+                {
+                    "equals": {
+                        "method": "PUT",
+                        "path": "/api/v1/person"
+                    }
+                },
+                {
+                    "exists": {
+                        "query": {
+                            "id": true
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

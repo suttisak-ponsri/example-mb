@@ -1,0 +1,49 @@
+function updatedSuccess(req) {
+    const fs = require('fs');
+    const path = require('path');
+    const date = new Date();
+
+    // console.log("\n========> Request:" + JSON.stringify(req.query.id));
+
+    const rawData = fs.readFileSync(path.resolve(process.cwd(), 'person/data/persons.json'), 'utf8');
+    const persons = JSON.parse(rawData);
+    let currentPerson = null;
+    for (let i = 0; i < persons.length; i++) {
+        if (persons[i].id === Number(req.query.id)) {
+            currentPerson = persons[i];
+            break;
+        }
+    }
+
+    if (!currentPerson) {
+        console.log("\n========> Person not found");
+        return {
+            statusCode: 404,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "code": 9999,
+                "message": "Person not found"
+            })
+        };
+    } else {
+        console.log("\n========> Person found");
+        const httpCode = 201;
+        const headers = {
+            "Content-Type": "application/json"
+        }
+        const body = {
+            "code": 1000,
+            "message": "Person updated successfully",
+            "currentData": currentPerson,
+            "newData": JSON.parse(req.body),
+            "updated": date
+        }
+        return {
+            statusCode: httpCode,
+            headers: headers,
+            body: JSON.stringify(body)
+        };
+    }
+}
